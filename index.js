@@ -1,11 +1,18 @@
-
 const express = require('express');
-const app  = express()
-const port = process.env.PORT || 5000;
+const connection = require('./DB/db'); // Fix the path to use single `/`
+const app = express();
+const PORT = process.env.PORT || 9000;
+
+// Middleware
+app.use(express.json()); // Parses incoming JSON requests
+
+
 app.get('/', (req, res) => {
-    res.send("hello server");
-  });
-  app.listen(port, () => {
-    console.log("server ");
-  });
+  res.send("Hello server");
+});
+
+app.listen(PORT, async () => {
+
+     connection(); 
     
+});
